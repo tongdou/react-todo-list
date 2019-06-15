@@ -6,7 +6,8 @@ class Todoitem extends React.Component {
 
 
   handleClick() {
-    this.props.delete(this.props.index);
+    const { deleteItem, index } = this.props;
+    deleteItem(index);
   }
   render() {
     return (<div>

@@ -4,12 +4,15 @@ import Todoitem from './Todoitem';
 // JSX语法结构，
 class Todolist extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       list: [
       ],
       inputValue: ''
-    }
+    };
+    this.handleItemDelete = this.handleItemDelete.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleBtnClick() {
@@ -44,11 +47,11 @@ class Todolist extends React.Component {
 
   render() {
     return (<div>
-      <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)} />
-      <button onClick={this.handleBtnClick.bind(this)}>add</button>
+      <input value={this.state.inputValue} onChange={this.handleInputChange} />
+      <button onClick={this.handleBtnClick}>add</button>
       <ul>
         {this.state.list.map((item, index) => {
-          return <Todoitem key={index} content={item} index={index} delete={this.handleItemDelete.bind(this)} />
+          return <Todoitem key={index} content={item} index={index} deleteItem={this.handleItemDelete} />
         })}
       </ul>
     </div>)
