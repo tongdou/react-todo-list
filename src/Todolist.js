@@ -23,7 +23,12 @@ class Todolist extends React.Component {
     this.setState((preState) => ({
       list: [...preState.list, preState.inputValue],
       inputValue: ''
-    }));
+    }), () => {
+      console.log(this.ul.querySelectorAll('div').length);
+    });
+
+
+
   }
 
   handleInputChange() {
@@ -60,7 +65,7 @@ class Todolist extends React.Component {
         onChange={this.handleInputChange}
         ref={(input) => { this.input = input }} />
       <button onClick={this.handleBtnClick}>add</button>
-      <ul>
+      <ul ref={(ul) => { this.ul = ul }}>
         {this.gotTodoitem()}
       </ul>
     </div>)
