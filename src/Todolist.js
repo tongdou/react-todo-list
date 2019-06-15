@@ -1,5 +1,6 @@
 import React from 'react';
 import Todoitem from './Todoitem';
+import Test from './Test';
 
 // JSX语法结构，
 class Todolist extends React.Component {
@@ -52,6 +53,7 @@ class Todolist extends React.Component {
   }
 
   render() {
+    console.log("render")
     return (<div>
       <label htmlFor="todoInput">请输入内容</label>
       <input placeholder="请输入内容" id="todoInput" value={this.state.inputValue} onChange={this.handleInputChange} />
@@ -59,6 +61,7 @@ class Todolist extends React.Component {
       <ul>
         {this.gotTodoitem()}
       </ul>
+      <Test content={this.state.inputValue} />
     </div>)
   }
 
