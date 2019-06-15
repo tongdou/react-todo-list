@@ -56,7 +56,21 @@ class Todolist extends React.Component {
     });
   }
 
+  componentWillMount() {
+    console.log("componentWillMount");
+  }
+
+
+  shouldComponentUpdate() {
+    console.log("shouldComponentUpdate");
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log("componentWillUpdate");
+  }
   render() {
+    console.log("render");
     return (<div>
       <label htmlFor="todoInput">请输入内容</label>
       <input
@@ -71,6 +85,12 @@ class Todolist extends React.Component {
     </div>)
   }
 
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
 
   gotTodoitem() {
     return this.state.list.map((item, index) => {

@@ -10,12 +10,35 @@ class Todoitem extends React.Component {
     const { deleteItem, index } = this.props;
     deleteItem(index);
   }
+
+  shouldComponentUpdate() {
+    console.log("child shouldComponentUpdate");
+    return true;
+  }
+
+  componentWillReceiveProps() {
+    console.log("child componentWillReceiveProps");
+  }
+
+  componentWillUpdate() {
+    console.log("child componentWillUpdate");
+  }
+
   render() {
+    console.log("child render");
     return (
       <div>
         {this.getContent()}
       </div>
     )
+  }
+
+  componentDidUpdate() {
+    console.log("child componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("child componentWillUnmount");
   }
 
   getContent() {
