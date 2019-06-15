@@ -11,7 +11,6 @@ class Todoitem extends React.Component {
     deleteItem(index);
   }
   render() {
-    console.log("item render");
     return (
       <div>
         {this.getContent()}

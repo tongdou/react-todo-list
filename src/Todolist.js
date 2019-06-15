@@ -1,6 +1,5 @@
 import React from 'react';
 import Todoitem from './Todoitem';
-import Test from './Test';
 
 // JSX语法结构，
 class Todolist extends React.Component {
@@ -27,8 +26,8 @@ class Todolist extends React.Component {
     }));
   }
 
-  handleInputChange(e) {
-    const value = e.target.value;
+  handleInputChange() {
+    const value = this.input.value;
     this.setState(() => ({
       inputValue: value
     }));
@@ -53,15 +52,17 @@ class Todolist extends React.Component {
   }
 
   render() {
-    console.log("render")
     return (<div>
       <label htmlFor="todoInput">请输入内容</label>
-      <input placeholder="请输入内容" id="todoInput" value={this.state.inputValue} onChange={this.handleInputChange} />
+      <input
+        placeholder="请输入内容"
+        id="todoInput" value={this.state.inputValue}
+        onChange={this.handleInputChange}
+        ref={(input) => { this.input = input }} />
       <button onClick={this.handleBtnClick}>add</button>
       <ul>
         {this.gotTodoitem()}
       </ul>
-      <Test content={this.state.inputValue} />
     </div>)
   }
 
