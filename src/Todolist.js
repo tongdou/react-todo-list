@@ -19,42 +19,54 @@ class Todolist extends React.Component {
     if (this.state.inputValue === '') {
       return;
     }
-    this.setState({
-      list: [...this.state.list, this.state.inputValue],
+
+    this.setState((preState) => ({
+      list: [...preState.list, preState.inputValue],
       inputValue: ''
-    })
+    }));
   }
 
   handleInputChange(e) {
-    this.setState({
-      inputValue: e.target.value
-    })
+    const value = e.target.value;
+    this.setState(() => ({
+      inputValue: value
+    }));
   }
 
   // 删除todolist
   handleItemClick(index) {
-    const list = [...this.state.list];
-    list.splice(index, 1);
-    this.setState({ list });
+    this.setState((preState) => {
+      const list = [...preState.list];
+      list.splice(index, 1);
+      return { list };
+    });
   }
 
   // 通过子组件回调删除子组件
   handleItemDelete(index) {
-    const list = [...this.state.list];
-    list.splice(index, 1);
-    this.setState({ list });
+    this.setState(() => {
+      const list = [...this.state.list];
+      list.splice(index, 1);
+      return { list };
+    });
   }
 
   render() {
     return (<div>
-      <input value={this.state.inputValue} onChange={this.handleInputChange} />
+      <label htmlFor="todoInput">请输入内容</label>
+      <input placeholder="请输入内容" id="todoInput" value={this.state.inputValue} onChange={this.handleInputChange} />
       <button onClick={this.handleBtnClick}>add</button>
       <ul>
-        {this.state.list.map((item, index) => {
-          return <Todoitem key={index} content={item} index={index} deleteItem={this.handleItemDelete} />
-        })}
+        {this.gotTodoitem()}
       </ul>
     </div>)
+  }
+
+
+  gotTodoitem() {
+    return this.state.list.map((item, index) => {
+      return <Todoitem key={index} content={item} index={index} deleteItem={this.handleItemDelete} />
+    });
   }
 
 }
