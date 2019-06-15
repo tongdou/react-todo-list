@@ -1,3 +1,10 @@
+### charles 抓不到 localhost 和 127.0.0.1
+
+charles 抓不到 localhost 和 127.0.0.1，localhost.charlesproxy.com 指向了 127.0.0.1
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

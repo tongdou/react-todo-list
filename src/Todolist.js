@@ -1,5 +1,6 @@
 import React from 'react';
 import Todoitem from './Todoitem';
+import axios from 'axios';
 
 // JSX语法结构，
 class Todolist extends React.Component {
@@ -89,6 +90,13 @@ class Todolist extends React.Component {
     console.log("componentDidUpdate");
   }
   componentDidMount() {
+    axios.get("/todolist")
+      .then((ref) => {
+        this.setState(() => ({
+          list: [...ref.data]
+        }));
+      })
+      .catch(() => { alert("error") });
     console.log("componentDidMount");
   }
 
